@@ -8,14 +8,16 @@ export default function Home() {
     <section id="home" className="zone zone-home" aria-labelledby="home-title" data-sink>
       <div className="hero">
         <p className="eyebrow">
-          <span>{profile.handle}</span>
+          <span className="eyebrow-accent">Prologue</span>
           <span aria-hidden="true">·</span>
-          <span>Surface</span>
+          <span>A story told in eight depths</span>
         </p>
         <h1 id="home-title" className="hero-name">
           {profile.name}
         </h1>
-        <p className="hero-role">{profile.role}</p>
+        <p className="hero-role">
+          {profile.role} <span className="hero-handle">a.k.a. {profile.handle}</span>
+        </p>
         <p className="hero-focus">
           {profile.focus.map((f) => (
             <span key={f}>{f}</span>

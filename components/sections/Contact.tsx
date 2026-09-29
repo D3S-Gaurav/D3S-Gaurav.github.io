@@ -9,10 +9,11 @@ export default function Contact() {
   return (
     <section id="contact" className="zone zone-contact" aria-labelledby="contact-title">
       <div className="contact-inner">
-        <ZoneHeader id="contact" title="Let's build something." />
+        <ZoneHeader id="contact" />
         <div data-reveal className="contact-body">
           <p className="contact-note">
-            Open to backend and full-stack roles, internships and interesting open-source problems. The fastest way to reach me is email.
+            Every descent ends somewhere. This one ends with an invitation: he is open to backend and full-stack roles,
+            internships and open-source collaboration — and the surface is only an email away.
           </p>
           <a className="contact-email" href={`mailto:${profile.email}`}>
             {profile.email}

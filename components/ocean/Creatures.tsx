@@ -14,6 +14,7 @@ export default function Creatures() {
   const whale = useRef<HTMLDivElement>(null);
   const manta = useRef<HTMLDivElement>(null);
   const angler = useRef<HTMLDivElement>(null);
+  const wreck = useRef<HTMLDivElement>(null);
 
   useEffect(
     () =>
@@ -27,6 +28,11 @@ export default function Creatures() {
           const t = (d - 0.18) / 0.3;
           manta.current.style.opacity = String(band(d, 0.18, 0.24, 0.36, 0.46) * 0.6);
           manta.current.style.transform = `translate3d(${-30 + t * 120}vw, ${70 - t * 70}vh, 0) rotate(${-8 + t * 16}deg)`;
+        }
+        if (wreck.current) {
+          const t = (d - 0.47) / 0.18;
+          wreck.current.style.opacity = String(band(d, 0.47, 0.52, 0.6, 0.66) * 0.9);
+          wreck.current.style.transform = `translate3d(0, ${70 - t * 60}vh, 0)`;
         }
         if (angler.current) {
           const t = (d - 0.8) / 0.2;
@@ -49,6 +55,14 @@ export default function Creatures() {
         <svg viewBox="0 0 300 200">
           <path d="M150 40c20 0 35 20 45 35 35 5 75 20 100 45-35-2-75 0-105 10-10 20-25 35-40 40-15-5-30-20-40-40-30-10-70-12-105-10 25-25 65-40 100-45 10-15 25-35 45-35z" />
           <path d="M149 168h2l2 32h-6z" />
+        </svg>
+      </div>
+      <div ref={wreck} className="creature wreck">
+        <svg viewBox="0 0 600 260">
+          <path d="M20 190l40-60h420l60 20-30 70H70z" />
+          <path d="M150 130l-18-120h6l20 120zM330 130l30-110h6l-26 110z" />
+          <path className="wreck-rig" d="M138 20L60 128M138 20L300 128M362 22l100 106M362 22L230 128" fill="none" />
+          <path d="M0 240c80-18 160-20 260-10s220 10 340-6V260H0z" />
         </svg>
       </div>
       <div ref={angler} className="creature angler">

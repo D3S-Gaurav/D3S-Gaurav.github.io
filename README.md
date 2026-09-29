@@ -6,6 +6,7 @@ Live at **https://d3s-gaurav.github.io**.
 ## Stack
 
 Next.js (static export) · React · TypeScript · three.js (custom shaders) · plain CSS. No other runtime deps.
+Palette is Catppuccin Mocha; skill icons are self-hosted from Simple Icons in `public/icons/`.
 
 ## Develop
 
@@ -21,10 +22,12 @@ Pushing to `main` deploys to GitHub Pages via `.github/workflows/deploy.yml`.
 
 | Path | What |
 | --- | --- |
-| `data/profile.ts` | Name, intro, education, experience, skills, achievements, links |
-| `data/projects.ts` | Projects shown as deep-sea "contacts" (add an entry to add a project) |
+| `data/profile.ts` | Name, the About story (third-person narrative), field notes, skills + icons, links |
+| `data/experience.ts` | Voyages (roles) and the upstream open-source PR ledger |
+| `data/achievements.ts` | Achievement plaques and Codeforces / LeetCode snapshots |
+| `data/projects.ts` | Projects shown as deep-sea "contacts", plus the smaller-finds list |
 | `data/hobbies.ts` | Hobbies shown as bioluminescent organisms |
-| `data/sections.ts` | Routes, zone names, page titles/descriptions |
+| `data/sections.ts` | Routes, chapter names/headings, zone names, page titles/descriptions |
 | `lib/depth.ts` | Scroll → depth engine (zone mapping, easing, scroll-linked reveals) |
 | `lib/settings.tsx` | Quality / particles / intensity / ambient / reduced-motion settings |
 | `components/ocean/` | WebGL water column + particles (`OceanCanvas`, `shaders.ts`) and silhouettes |

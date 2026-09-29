@@ -8,7 +8,10 @@ export default function Hobbies() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <section id="hobbies" className="zone zone-hobbies" aria-labelledby="hobbies-title">
-      <ZoneHeader id="hobbies" title="Hobbies" lede="Down here, the only light is what things make themselves. Touch one." />
+      <ZoneHeader
+        id="hobbies"
+        lede="Down here the only light is the light things make themselves. These are the ones that kept him glowing. Touch one."
+      />
       <ul className="organisms">
         {hobbies.map((h, i) => {
           const isOpen = open === h.id;

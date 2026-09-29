@@ -8,9 +8,11 @@ import { sections } from "@/data/sections";
  */
 export const ZONE_DEPTH: Record<SectionId, number> = {
   home: 0,
-  about: 0.16,
-  projects: 0.36,
-  hobbies: 0.62,
+  about: 0.12,
+  experience: 0.24,
+  projects: 0.37,
+  achievements: 0.55,
+  hobbies: 0.66,
   settings: 0.8,
   contact: 0.9,
 };

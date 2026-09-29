@@ -22,8 +22,12 @@ const ProjectDialog = forwardRef<HTMLDialogElement, { project: Project; index: n
               <span>Contact {String(index + 1).padStart(2, "0")}</span>
               <span aria-hidden="true">·</span>
               <span>{p.kind}</span>
-              <span aria-hidden="true">·</span>
-              <span>{p.period}</span>
+              {p.period && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>{p.period}</span>
+                </>
+              )}
             </p>
             <h3 id={titleId}>{p.title}</h3>
             <p className="dossier-sub">{p.subtitle}</p>
@@ -34,6 +38,7 @@ const ProjectDialog = forwardRef<HTMLDialogElement, { project: Project; index: n
             </form>
           </header>
 
+          <p className="dossier-hook">{p.hook}</p>
           <p className="dossier-desc">{p.description}</p>
 
           <section className="dossier-block">
@@ -62,7 +67,7 @@ const ProjectDialog = forwardRef<HTMLDialogElement, { project: Project; index: n
           <div className="dossier-links">
             {p.githubUrl && (
               <a className="btn" href={p.githubUrl} target="_blank" rel="noreferrer">
-                {p.kind === "Open Source" ? "GitHub profile" : "Source on GitHub"}
+                Source on GitHub
                 <span className="sr-only"> (opens in new tab)</span>
               </a>
             )}

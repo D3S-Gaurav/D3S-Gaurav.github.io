@@ -49,24 +49,29 @@ void main(){
   float d = uDepth;
   vec2 m = uMouse * 0.02;
 
+  // Catppuccin-leaning water: sky-blue surface sinking into indigo and violet-black.
   vec3 top = grade(d,
-    vec3(0.16, 0.50, 0.60), vec3(0.07, 0.30, 0.42), vec3(0.035, 0.15, 0.24),
-    vec3(0.018, 0.075, 0.13), vec3(0.008, 0.03, 0.055), vec3(0.002, 0.006, 0.012));
+    vec3(0.20, 0.46, 0.64), vec3(0.12, 0.25, 0.46), vec3(0.10, 0.13, 0.32),
+    vec3(0.075, 0.06, 0.19), vec3(0.04, 0.025, 0.095), vec3(0.012, 0.008, 0.028));
   vec3 bottom = grade(d,
-    vec3(0.03, 0.17, 0.26), vec3(0.018, 0.10, 0.17), vec3(0.01, 0.05, 0.09),
-    vec3(0.006, 0.025, 0.05), vec3(0.003, 0.01, 0.022), vec3(0.0, 0.0015, 0.004));
+    vec3(0.05, 0.15, 0.28), vec3(0.04, 0.08, 0.2), vec3(0.035, 0.035, 0.12),
+    vec3(0.022, 0.014, 0.065), vec3(0.01, 0.006, 0.032), vec3(0.0, 0.0, 0.006));
   vec3 col = mix(bottom, top, pow(uv.y, 1.35));
 
   // Slow drifting haze gives the water volume.
   float haze = fbm(vec2(uv.x * uAspect * 1.6 + uTime * 0.012, uv.y * 2.2 - uTime * 0.008));
   float light = 1.0 - smoothstep(0.0, 0.7, d);
   col += (haze - 0.5) * mix(0.05, 0.012, d) * (0.4 + light);
+  // A faint mauve and teal aurora drifts through the twilight and midnight zones.
+  float mid = smoothstep(0.12, 0.3, d) * (1.0 - smoothstep(0.6, 0.85, d));
+  float aur = fbm(vec2(uv.x * uAspect * 0.9 - uTime * 0.01, uv.y * 1.4 + uTime * 0.006));
+  col += mix(vec3(0.58, 0.44, 0.86), vec3(0.34, 0.74, 0.7), uv.x) * smoothstep(0.5, 0.85, aur) * 0.06 * mid;
 
   // The surface seen from below, rising out of view as we descend.
   float sy = 0.8 + d * 3.2 - m.y;
   float w = fbm(vec2(uv.x * uAspect * 2.6 + uTime * 0.05, (uv.y - sy) * 9.0 + uTime * 0.12));
   float surf = smoothstep(sy - 0.015, sy + 0.05, uv.y + (w - 0.5) * 0.035);
-  vec3 surfCol = vec3(0.30, 0.66, 0.74) * (0.55 + 0.75 * w);
+  vec3 surfCol = vec3(0.42, 0.72, 0.86) * (0.55 + 0.75 * w);
   col = mix(col, surfCol, surf * 0.85 * uRays);
 
   // Sun and light shafts.
@@ -78,16 +83,16 @@ void main(){
   float rays = fbm(vec2(ang * 7.0, uTime * 0.05));
   rays = pow(smoothstep(0.35, 0.85, rays), 2.0);
   float fall = exp(-max(0.0, sun.y - uv.y) * 1.6);
-  col += vec3(0.45, 0.78, 0.82) * (rays * 0.22 * fall + glow * 0.28) * shallow * uRays;
+  col += vec3(0.62, 0.84, 0.95) * (rays * 0.22 * fall + glow * 0.28) * shallow * uRays;
 
   // Faint caustic web just beneath the surface.
   float c = abs(noise(uv * vec2(uAspect, 1.0) * 14.0 + uTime * 0.25) - noise(uv * vec2(uAspect, 1.0) * 14.0 - uTime * 0.2));
-  col += vec3(0.4, 0.75, 0.8) * pow(1.0 - c, 14.0) * 0.08 * smoothstep(sy - 0.45, sy, uv.y) * shallow * uRays;
+  col += vec3(0.6, 0.82, 0.95) * pow(1.0 - c, 14.0) * 0.08 * smoothstep(sy - 0.45, sy, uv.y) * shallow * uRays;
 
   // In the dark zones the cursor stirs a faint glow in the water.
   float bio = smoothstep(0.45, 0.62, d) * (1.0 - smoothstep(0.9, 1.0, d));
   vec2 mp = vec2((uv.x - (uMouse.x * 0.5 + 0.5)) * uAspect, uv.y - (uMouse.y * 0.5 + 0.5));
-  col += vec3(0.0, 0.22, 0.26) * exp(-length(mp) * 6.0) * 0.14 * bio;
+  col += vec3(0.42, 0.24, 0.55) * exp(-length(mp) * 5.0) * 0.12 * bio;
 
   // Vignette and dither against banding in the dark gradients.
   vec2 v = uv - 0.5;
@@ -110,6 +115,7 @@ uniform vec2 uMouse;
 uniform float uParallax;
 varying float vAlpha;
 varying float vGlow;
+varying float vHue;
 
 void main(){
   float z = mix(1.2, 12.0, position.z);
@@ -135,6 +141,7 @@ void main(){
 
   float ambient = mix(0.75, 0.10, smoothstep(0.0, 0.65, uDepth)) * (1.0 - 0.6 * smoothstep(0.85, 1.0, uDepth));
   vGlow = glows * (twinkle + nearMouse * 1.5);
+  vHue = fract(aSeed.z * 7.13);
   vAlpha = keep * (ambient * (0.35 + 0.65 * inv * 1.2) + vGlow * 0.9);
 
   gl_Position = vec4(p, 0.0, 1.0);
@@ -146,12 +153,14 @@ export const particleFragment = /* glsl */ `
 precision mediump float;
 varying float vAlpha;
 varying float vGlow;
+varying float vHue;
 void main(){
   float r = length(gl_PointCoord - 0.5);
   float a = smoothstep(0.5, 0.0, r);
   a *= a;
-  vec3 snow = vec3(0.72, 0.86, 0.9);
-  vec3 glow = vec3(0.25, 0.95, 0.9);
+  vec3 snow = vec3(0.8, 0.84, 0.96);
+  // Bioluminescence in teal, mauve and pink.
+  vec3 glow = vHue < 0.45 ? vec3(0.58, 0.89, 0.84) : vHue < 0.8 ? vec3(0.8, 0.65, 0.97) : vec3(0.96, 0.76, 0.91);
   vec3 col = mix(snow, glow, clamp(vGlow, 0.0, 1.0));
   gl_FragColor = vec4(col, a * vAlpha);
 }

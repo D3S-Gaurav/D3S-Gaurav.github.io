@@ -1,67 +1,84 @@
+// All narrative copy is written in a third-person, novel-like voice, but every
+// fact in it comes from the resume, GitHub, Codeforces or LeetCode.
+
+export type Skill = { name: string; icon?: string };
+
 export const profile = {
   name: "Kumar Gaurav",
+  shortName: "Gaurav",
   handle: "ATHEUS",
   role: "Backend / Full Stack Engineer",
   focus: ["Distributed Systems", "Real-time", "AI Platforms"],
-  tagline: "Building things worth exploring.",
-  location: "Jamshedpur, Jharkhand, India",
-  email: "kumargaurav122004@gmail.com",
+  tagline: "Every system has a surface. He was always more interested in what lay beneath it.",
+  location: "Jamshedpur, India",
+  email: "kumargauravrocco2724@gmail.com",
   resumeUrl: "/Kumar_Gaurav_Resume.pdf",
   siteUrl: "https://d3s-gaurav.github.io",
 
-  intro:
-    "I'm a Computer Science undergraduate at BIT Mesra who likes the parts of software you don't see: the services, pipelines and contracts that keep an app standing when something upstream falls over.",
-  introMore:
-    "Most of what I build is backend-heavy and real-time — WebSocket gateways, event pipelines, LLM orchestration — and I spend my spare cycles contributing to open-source infrastructure and solving algorithm problems.",
-
-  education: {
-    school: "Birla Institute of Technology, Mesra",
-    place: "Ranchi, Jharkhand",
-    degree: "B.Tech, Computer Science and Engineering",
-    period: "Aug 2023 – May 2027 (expected)",
-    detail: "CGPA 7.88 / 10",
-  },
-
-  interests: [
-    "Distributed systems that degrade gracefully instead of failing loudly",
-    "Real-time transport: WebSockets, event streams, idempotent replay",
-    "Type-safe contracts end to end — from payload validation to the UI",
-    "LLM systems with bounded cost and hardened inputs",
+  story: [
+    "From Jamshedpur, Kumar Gaurav went north to Ranchi to study Computer Science at the Birla Institute of Technology, Mesra. Somewhere between lectures and contest rounds he noticed that the parts of software he liked best were the ones nobody sees — the services, queues and contracts that keep an application standing when something upstream falls over.",
+    "So he went looking for them. He built WebSocket gateways where every event is type-checked before it leaves the server, event pipelines that refuse to stall for one slow reader, and an orchestration engine that turns a single goal into a swarm of cooperating agents. When he wasn't building his own, he was reading other people's — and sending patches upstream.",
+    "He has a habit: file the issue first, then the PR. He likes the unglamorous work that unblocks people — flaky tests, broken CI matrices, lint rules that erase whole classes of bugs. These days he is going deeper, into distributed systems and into Go.",
   ],
 
-  experience: [
-    {
-      role: "Backend Engineer",
-      org: "Soil Suitability Platform",
-      kind: "Agri-Tech / AI platform · Remote",
-      period: "Jan 2026 – Present",
-      summary:
-        "Split a FastAPI backend into isolated, stateless microservices and hardened the Gemini-powered analysis route against prompt injection.",
-    },
-    {
-      role: "Open Source Contributor",
-      org: "Karmada · Oppia · Joomla · FOSSology",
-      kind: "Go, TypeScript, PHP · Remote",
-      period: "Jan 2026 – Present",
-      summary:
-        "Distributed-systems and CLI tooling fixes, lint rules and CI/CD repairs across four upstream projects with 18k+ combined stars.",
-    },
+  fieldNotes: [
+    { label: "Based in", value: "Jamshedpur, Jharkhand, India" },
+    { label: "Studying", value: "B.Tech CSE · BIT Mesra · 2023 – 2027" },
+    { label: "CGPA", value: "7.88 / 10" },
+    { label: "Currently", value: "Backend Engineer, Soil Suitability Platform" },
+    { label: "Going deeper on", value: "Distributed systems & Go" },
+    { label: "Signs his work", value: "ATHEUS" },
   ],
 
   skills: [
-    { group: "Languages", items: ["Python", "Java", "JavaScript", "TypeScript", "Go", "C++", "SQL", "Bash"] },
-    { group: "Web", items: ["React", "Next.js", "Node.js", "Express", "REST", "Socket.IO", "Zod"] },
-    { group: "Data", items: ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "Redis", "Kafka"] },
-    { group: "Tooling", items: ["Git", "GitHub Actions", "Docker", "Linux", "gRPC"] },
-    { group: "Concepts", items: ["DSA", "OOP", "Distributed Systems", "WebSockets", "TCP/IP"] },
-  ],
-
-  achievements: [
-    { value: "500+", label: "DSA problems solved on Codeforces & LeetCode" },
-    { value: "#682", label: "Rank in a Codeforces Div. 2 round" },
-    { value: "Finalist", label: "SEBI Hackathon (national level)" },
-    { value: "Gold", label: "WorldQuant BRAIN — 10,000+ points, 8 alphas" },
-  ],
+    {
+      group: "Languages",
+      items: [
+        { name: "TypeScript", icon: "typescript" },
+        { name: "JavaScript", icon: "javascript" },
+        { name: "Python", icon: "python" },
+        { name: "Go", icon: "go" },
+        { name: "Java", icon: "openjdk" },
+        { name: "C++", icon: "cplusplus" },
+        { name: "SQL" },
+        { name: "Bash", icon: "gnubash" },
+      ],
+    },
+    {
+      group: "Web",
+      items: [
+        { name: "React", icon: "react" },
+        { name: "Next.js", icon: "nextdotjs" },
+        { name: "Node.js", icon: "nodedotjs" },
+        { name: "Express", icon: "express" },
+        { name: "FastAPI", icon: "fastapi" },
+        { name: "Socket.IO", icon: "socketdotio" },
+        { name: "Zod", icon: "zod" },
+        { name: "Bun", icon: "bun" },
+      ],
+    },
+    {
+      group: "Data",
+      items: [
+        { name: "PostgreSQL", icon: "postgresql" },
+        { name: "MySQL", icon: "mysql" },
+        { name: "MongoDB", icon: "mongodb" },
+        { name: "Prisma", icon: "prisma" },
+        { name: "Redis", icon: "redis" },
+        { name: "Kafka", icon: "apachekafka" },
+      ],
+    },
+    {
+      group: "Infra",
+      items: [
+        { name: "Docker", icon: "docker" },
+        { name: "GitHub Actions", icon: "githubactions" },
+        { name: "Linux", icon: "linux" },
+        { name: "Git", icon: "git" },
+        { name: "gRPC" },
+      ],
+    },
+  ] satisfies { group: string; items: Skill[] }[],
 
   links: [
     { label: "GitHub", value: "D3S-Gaurav", href: "https://github.com/D3S-Gaurav" },

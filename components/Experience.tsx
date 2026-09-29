@@ -10,7 +10,9 @@ import DepthHUD from "./navigation/DepthHUD";
 import Creatures from "./ocean/Creatures";
 import Home from "./sections/Home";
 import About from "./sections/About";
+import Voyages from "./sections/Experience";
 import Projects from "./sections/Projects";
+import Achievements from "./sections/Achievements";
 import Hobbies from "./sections/Hobbies";
 import Settings from "./sections/Settings";
 import Contact from "./sections/Contact";
@@ -101,7 +103,9 @@ function World({ initial }: { initial: SectionId }) {
       <main className="world">
         <Home />
         <About />
+        <Voyages />
         <Projects />
+        <Achievements />
         <Hobbies />
         <Settings />
         <Contact />

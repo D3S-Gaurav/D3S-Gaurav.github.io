@@ -62,7 +62,10 @@ export default function Settings() {
 
   return (
     <section id="settings" className="zone zone-settings" aria-labelledby="settings-title">
-      <ZoneHeader id="settings" title="Settings" lede="Abyss control. Tune the dive to your device and comfort — saved on this device." />
+      <ZoneHeader
+        id="settings"
+        lede="Before the last stretch, a pause at the controls. Tune the dive to your device and your comfort — it is remembered on this device."
+      />
       <div className="console" data-reveal>
         <div className="console-status" aria-live="polite">
           <span>
