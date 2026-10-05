@@ -42,9 +42,9 @@ export const achievements: Achievement[] = [
   {
     id: "dsa",
     kicker: "Problem solving",
-    value: "500+",
+    value: "600+",
     title: "DSA problems solved",
-    story: "Across Codeforces and LeetCode, one timed puzzle at a time.",
+    story: "Across LeetCode, Codeforces, CodeChef and GeeksforGeeks, one timed puzzle at a time.",
     tone: "teal",
   },
   {
@@ -52,7 +52,7 @@ export const achievements: Achievement[] = [
     kicker: "Upstream",
     value: "3 merged",
     title: "Patches in production OSS",
-    story: "Code now running in Oppia (6.7k★) and FOSSology (1.0k★), with more in review at Karmada and Joomla.",
+    story: "Code now running in Oppia (6.8k★) and FOSSology (1.0k★), with more in review at Karmada and Joomla.",
     tone: "pink",
     href: "https://github.com/pulls?q=author%3AD3S-Gaurav+is%3Amerged",
   },

@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: "Loom",
     subtitle: "Real-time multi-agent LLM orchestration",
     kind: "Project",
-    period: "Apr – May 2026",
+    period: "Aug – Sep 2026",
     hook: "One goal went in. A swarm came out — planners, researchers, validators — each one visible on a live graph while it worked.",
     description:
       "An orchestration engine that decomposes a goal into a dependency-aware task graph, runs specialist agents concurrently, validates their output and synthesises the answer, streaming every state change to a React Flow UI.",
@@ -42,10 +42,10 @@ export const projects: Project[] = [
   {
     id: "chatflow",
     title: "ChatFlow",
-    subtitle: "Real-time, distributed group chat",
+    subtitle: "Real-time group chat",
     kind: "Project",
-    period: "May – Jun 2026",
-    hook: "The load test blamed the sockets. He followed the stall further down and found the real culprit waiting in the Prisma connection pool.",
+    period: "Jun – Jul 2026",
+    hook: "He pushed it until it broke. Five thousand sockets held fine; what gave out first was the single thread doing the broadcasting.",
     description:
       "A stateless HTTP/WebSocket chat gateway in full-stack TypeScript where every socket event is compile-time checked and every payload is treated as hostile.",
     problem:
@@ -55,7 +55,8 @@ export const projects: Project[] = [
       "Fully typed Socket.IO event contract via TypeScript generics — every emit/on call is compile-time checked.",
       "Zod validation on every payload, scrypt hashing, timing-safe comparison, tiered rate limiting and boot-time env validation.",
       "Cursor pagination over a composite (groupId, createdAt) index, role-based access (Admin / Moderator / Member) with orphan-admin protection, multi-tab presence.",
-      "32 Vitest tests across 6 suites in GitHub Actions against live PostgreSQL 17, plus a k6 WebSocket load harness.",
+      "k6 load tests on one Node process: 5,000 concurrent sockets, ~97k message deliveries/s with zero loss, p95 40 ms at 1,000 sockets — the ceiling is the single-threaded broadcast, not connection count.",
+      "32 Vitest tests across 6 suites in GitHub Actions against live PostgreSQL 17.",
     ],
     githubUrl: "https://github.com/D3S-Gaurav/chat-fullstack",
     form: "nautilus",
