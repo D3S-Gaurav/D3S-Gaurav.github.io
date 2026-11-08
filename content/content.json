@@ -1,0 +1,181 @@
+{
+  "profile": {
+    "name": "Kumar Gaurav",
+    "title": "Backend Engineer: Distributed Systems & AI Agents",
+    "origin": "Jamshedpur, Jharkhand",
+    "college": "BIT Mesra",
+    "collegeFull": "Birla Institute of Technology, Mesra (Ranchi)",
+    "degree": "B.Tech, CSE",
+    "degreeFull": "B.Tech in Computer Science and Engineering",
+    "classOf": "2027",
+    "educationDates": "Aug 2023 – May 2027",
+    "cgpa": "7.88/10",
+    "availability": "Available for a 6-month internship from Dec 2026, and full-time from Jul 2027.",
+    "email": "kumargaurav122004@gmail.com",
+    "linkedin": "https://linkedin.com/in/kumar-gaurav-cs",
+    "github": "https://github.com/D3S-Gaurav",
+    "codeforces": "ATHEUS",
+    "leetcode": "ATHEUS_007",
+    "resumePdf": "Kumar_Gaurav_Resume.pdf"
+  },
+  "school": [
+    "JUNIOR MATHS OLYMPIAD — 3RD PRIZE (TEAM)",
+    "IMO — SCHOOL RANK 4 (CLASS 4)",
+    "TAEKWONDO — REGIONAL MEDALS",
+    "JEE MAIN — 98 PERCENTILE"
+  ],
+  "skills": [
+    { "short": "LANG", "name": "Languages", "items": ["Go", "TypeScript", "Python", "SQL", "C++"] },
+    { "short": "BACK", "name": "Backend", "items": ["Node.js", "FastAPI", "gRPC", "Kafka", "Temporal", "WebSockets", "Socket.IO"] },
+    { "short": "AI", "name": "AI", "items": ["Multi-agent", "MCP", "Structured outputs", "LLM APIs"] },
+    { "short": "DATA", "name": "Data", "items": ["PostgreSQL", "Redis", "Prisma"] },
+    { "short": "INFRA", "name": "Infra & Testing", "items": ["Docker", "GitHub Actions", "Prometheus", "k6", "Linux"] },
+    { "short": "FRONT", "name": "Frontend", "items": ["React", "Next.js", "Angular", "HTML/CSS"] }
+  ],
+  "projects": [
+    {
+      "id": "loom",
+      "icon": "loom",
+      "kind": "project",
+      "title": "Loom",
+      "role": "Multi-Agent LLM Orchestration Platform",
+      "dates": "Aug 2026 – Sep 2026",
+      "summary": "Turns one goal into a task graph that planner, worker and validator agents run together.",
+      "points": [
+        "Designed a planner, worker and validator agent loop: the planner turns one goal into a schema-validated task DAG, workers run independent nodes in parallel, and validators drive revisions, with Temporal crash recovery.",
+        "Built an event pipeline from Redis through Kafka and a Go service to gRPC and WebSocket clients, with per-run sequence numbers so a reconnecting client never applies an event twice.",
+        "Wrote a non-blocking Go fan-out hub that evicts slow subscribers instead of stalling the Kafka consumer, verified under the race detector.",
+        "Exposed runs to AI clients such as Claude Code through a read-only, account-scoped MCP server."
+      ],
+      "stack": ["Go", "TypeScript", "Kafka", "gRPC", "Redis", "PostgreSQL", "Temporal"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/Loom" }]
+    },
+    {
+      "id": "chatflow",
+      "icon": "chat",
+      "kind": "project",
+      "title": "ChatFlow",
+      "role": "Real-Time Group Chat",
+      "dates": "Jun 2026 – Jul 2026",
+      "summary": "A typed real-time chat backend, load-tested to 5,000 concurrent sockets with zero message loss.",
+      "points": [
+        "Load-tested with k6 to 5,000 concurrent sockets and ~97k deliveries/s with zero message loss on one Node process (p95 40 ms at 1k sockets), and traced the ceiling to the single-threaded broadcast loop.",
+        "Designed a typed Socket.IO event contract with Zod validation on every payload, JWT socket auth, scrypt hashing and tiered rate limits, covered by 32 integration tests in GitHub Actions."
+      ],
+      "stack": ["TypeScript", "Node.js", "Socket.IO", "Prisma", "PostgreSQL", "k6"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/chat-fullstack" }]
+    },
+    {
+      "id": "soilsense",
+      "icon": "sprout",
+      "kind": "experience",
+      "title": "SoilSense",
+      "role": "Backend Engineer, faculty-mentored AgriTech startup (BIT Mesra)",
+      "dates": "Mar 2026 – Sep 2026",
+      "summary": "A crop-suitability engine that maps each soil deficiency to an organic amendment.",
+      "points": [
+        "Built the crop-suitability rules engine (FastAPI) across 22 crops on a public 2,200-sample dataset, using tolerance bands of 10% on NPK and 0.3 on pH to map each soil deficiency to an organic amendment.",
+        "Combined 22 per-crop API calls into one batched endpoint on a pre-loaded dataset: 2.3x faster (48 to 21 ms).",
+        "Validated and type-cast the 5 sensor inputs before they reach the Gemini prompt, rejecting any unexpected fields."
+      ],
+      "stack": ["Python", "FastAPI", "pandas", "Gemini API"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/soil-suitability-app" }]
+    },
+    {
+      "id": "oppia",
+      "icon": "branch",
+      "kind": "experience",
+      "title": "Open Source: Oppia & FOSSology",
+      "role": "Collaborator with merge access, Oppia Dev Workflow team",
+      "dates": "Jan 2026 – Present",
+      "summary": "Promoted to merge access on a 6.8k-star project after 3 merged PRs.",
+      "points": [
+        "Promoted to Collaborator with merge access on Oppia's Dev Workflow team (6.8k stars), after 3 merged PRs.",
+        "Authored a custom ESLint rule that fails CI on undocumented ViewEncapsulation.None, a recurring source of CSS leaking across components, shipped with 10 tests and a 41-file legacy allowlist for incremental migration.",
+        "Migrated FOSSology's Vagrant dev environment from end-of-life Ubuntu 20.04 to 22.04 to match its CI runners."
+      ],
+      "stack": ["TypeScript", "Angular", "ESLint", "CI"],
+      "links": [{ "label": "Oppia", "href": "https://github.com/oppia/oppia" }]
+    },
+    {
+      "id": "research",
+      "icon": "flask",
+      "kind": "experience",
+      "title": "Comment Moderation NLP",
+      "role": "Research Intern, BIT Mesra",
+      "dates": "May 2026 – Jul 2026",
+      "summary": "A 4-class comment-moderation classifier reaching 0.836 macro-F1 on 198k comments.",
+      "points": [
+        "Built a comment-moderation classifier on 198k comments using TF-IDF plus 36 engineered signals.",
+        "A LightGBM and Logistic Regression blend reached 0.836 macro-F1 and lifted the rare threat class from 0.23 to 0.65 F1."
+      ],
+      "stack": ["Python", "scikit-learn", "LightGBM"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/comment-moderation-nlp" }]
+    },
+    {
+      "id": "collegepredictor",
+      "icon": "cap",
+      "kind": "more",
+      "title": "CollegePredictor",
+      "role": "JoSAA/CSAB college eligibility predictor",
+      "dates": "",
+      "summary": "Enter a JEE rank and get NITs, IIITs and GFTIs banded by how likely each one is.",
+      "points": [
+        "Built a Playwright ETL that scrapes the official ASP.NET counselling archive into PostgreSQL.",
+        "Bands results with a four-level confidence model (SAFE, LIKELY, DREAM, REACH) using batched cross-year lookups, with 34 tests in CI."
+      ],
+      "stack": ["TypeScript", "Next.js", "PostgreSQL", "Prisma", "Playwright"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/CollegePredictor" }]
+    },
+    {
+      "id": "co",
+      "icon": "robot",
+      "kind": "more",
+      "title": "Co",
+      "role": "Self-hosting agent runtime (in progress)",
+      "dates": "",
+      "summary": "A durable runtime being built so an AI agent can plan, implement, test and ship changes to itself.",
+      "points": [
+        "Phase 1 of 5 is complete: the database layer, typed repositories and health API.",
+        "Every async function returns a typed Effect, with dependency injection through Effect Layers so tests can swap in a test database."
+      ],
+      "stack": ["TypeScript", "Bun", "Effect-TS", "Drizzle", "PostgreSQL"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/SelfHostingAgent" }]
+    },
+    {
+      "id": "mailparser",
+      "icon": "mail",
+      "kind": "more",
+      "title": "Gmail Mail Parser",
+      "role": "Local inbox organiser",
+      "dates": "",
+      "summary": "Groups a Gmail inbox by sender and finds unsubscribe links, all processed locally.",
+      "points": [
+        "Connects through Google's OAuth2 and shows inbox statistics, emails grouped by sender and an unsubscribe manager.",
+        "All processing happens on the user's own machine."
+      ],
+      "stack": ["Python", "Flask", "Gmail API", "OAuth2"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/Mail_parser" }]
+    },
+    {
+      "id": "jobtracker",
+      "icon": "case",
+      "kind": "more",
+      "title": "Job Tracker",
+      "role": "Full-stack application tracker",
+      "dates": "",
+      "summary": "A TypeScript monorepo for managing job applications in one dashboard.",
+      "points": [
+        "Built as an npm-workspaces monorepo with a Next.js client and an Express REST API on PostgreSQL."
+      ],
+      "stack": ["TypeScript", "Next.js", "Express", "PostgreSQL"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/D3S-Gaurav/Job-Tracker" }]
+    }
+  ],
+  "achievements": [
+    "Top 4% (rank 682 of 17,000+) in Codeforces Round 1102 (Div. 2); 600+ DSA problems solved, 390+ on LeetCode.",
+    "Finalist, SEBI Securities Market TechSprint 2026 (Global Fintech Fest): built RegOS Sentinel, a human-supervised agent system that turns SEBI circulars into cited, auditable compliance obligations.",
+    "WorldQuant BRAIN Gold Level (8 peer-reviewed alphas)."
+  ],
+  "ranks": ["Junior", "Developer", "Engineer", "Architect"]
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Kumar Gaurav | Backend Engineer</title>
+    <meta name="description" content="Kumar Gaurav, backend engineer working on distributed systems and AI agents. Play the career as a retro arcade maze, or read the plain resume." />
+    <meta property="og:title" content="Kumar Gaurav | The career, playable" />
+    <meta property="og:description" content="A retro arcade maze where every pellet is a skill and every power-up is a project." />
+    <meta property="og:url" content="https://d3s-gaurav.github.io/" />
+    <meta name="theme-color" content="#05050a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <noscript><style>#game{display:none}#resume[hidden]{display:block!important}.resume-back{visibility:hidden}body{background:#fdfcf8;color:#1a1a22}</style></noscript>
+  </head>
+  <body>
+    <div id="game">
+      <div id="bar">
+        <span>KUMAR GAURAV</span>
+        <a href="#resume">RESUME</a>
+      </div>
+      <div id="stage">
+        <canvas id="screen" role="img" aria-label="Retro maze game. The full career is also available as a plain resume from the Resume link."></canvas>
+        <div id="crt"></div>
+      </div>
+      <div id="dpad" aria-label="Direction controls">
+        <button data-dir="0" aria-label="Up">^</button>
+        <button data-dir="3" aria-label="Left">&lt;</button>
+        <button data-dir="1" aria-label="Right">&gt;</button>
+        <button data-dir="2" aria-label="Down">v</button>
+      </div>
+      <div id="overlay"></div>
+      <div id="live" class="sr" aria-live="polite"></div>
+    </div>
+    <main id="resume" hidden><!--RESUME--></main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

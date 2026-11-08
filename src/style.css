@@ -1,0 +1,246 @@
+:root {
+  --black: #000;
+  --ink: #05050a;
+  --text: #f2f2f7;
+  --muted: #a4a9bf;
+  --yellow: #ffe14a;
+  --orange: #ff8a1e;
+  --red: #ff3b4e;
+  --green: #3dff8b;
+  --cyan: #2ef2ff;
+  --paper: #fdfcf8;
+  --paper-ink: #1a1a22;
+  --paper-muted: #55586a;
+  --link: #1b4fbf;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+}
+
+[hidden] { display: none !important; }
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Game shell */
+#game {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#bar {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+#bar a { color: var(--yellow); padding: 6px 0; }
+
+#stage {
+  position: relative;
+  line-height: 0;
+  box-shadow: 0 0 40px rgb(46 242 255 / 12%);
+}
+
+#screen {
+  display: block;
+  background: var(--black);
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #crt {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at center, transparent 62%, rgb(0 0 0 / 45%)),
+      repeating-linear-gradient(to bottom, rgb(0 0 0 / 22%) 0 1px, transparent 1px 3px);
+  }
+}
+
+#dpad {
+  display: none;
+  grid-template: repeat(3, 44px) / repeat(3, 44px);
+  gap: 2px;
+  margin-top: 10px;
+  padding-bottom: 8px;
+}
+
+#dpad button {
+  border: 2px solid var(--muted);
+  background: #14151f;
+  color: var(--text);
+  font: inherit;
+  padding: 0;
+  touch-action: none;
+}
+
+#dpad button:active { background: var(--orange); color: var(--black); }
+#dpad [data-dir="0"] { grid-area: 1 / 2; }
+#dpad [data-dir="3"] { grid-area: 2 / 1; }
+#dpad [data-dir="1"] { grid-area: 2 / 3; }
+#dpad [data-dir="2"] { grid-area: 3 / 2; }
+
+@media (pointer: coarse) {
+  #dpad { display: grid; }
+}
+
+/* Overlays */
+#overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  padding: 24px 16px;
+  overflow-y: auto;
+  background: rgb(0 0 0 / 90%);
+  touch-action: pan-y;
+}
+
+#overlay.show { display: flex; }
+
+#overlay > * { margin: auto; max-width: 640px; width: 100%; }
+
+#overlay h1, #overlay h2 { margin: 0 0 16px; font-weight: 400; }
+
+#overlay p { margin: 0 0 14px; }
+
+.player-card h1 { color: var(--yellow); font-size: 20px; }
+
+.player-card pre {
+  margin: 0 0 24px;
+  min-height: 9em;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hint { color: var(--muted); font-size: 10px; }
+.blink { animation: blink 1s steps(2, jump-none) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.start { text-align: center; }
+.start h1 { color: var(--orange); font-size: clamp(22px, 6vw, 40px); line-height: 1.3; }
+.start h2 { color: var(--yellow); font-size: 24px; }
+.tag { color: var(--muted); font-size: 10px; line-height: 2; }
+.welcome { color: var(--green); }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.actions.column {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+.nes-btn { font-size: 11px; }
+a.nes-btn:hover { text-decoration: none; }
+
+.settings { margin-top: 24px; color: var(--muted); font-size: 10px; }
+.settings summary { cursor: pointer; padding: 8px; }
+.settings .nes-btn { margin-top: 10px; font-size: 10px; }
+
+.card.nes-container.is-dark {
+  background: #0b0b12;
+  font-size: 10px;
+  line-height: 2;
+}
+
+.card ul { margin: 0 0 14px; padding-left: 16px; list-style: square; }
+.card li { margin-bottom: 10px; }
+.card a:not(.nes-btn) { color: var(--cyan); }
+
+.icon-slot { display: flex; justify-content: center; margin-bottom: 16px; }
+
+.icon {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+}
+
+.kicker { color: var(--green); }
+.card h2 { color: var(--yellow); font-size: 16px; line-height: 1.5; }
+.role { color: var(--orange); }
+.stack { color: var(--muted); }
+
+.end { text-align: center; }
+.end .actions { justify-content: center; }
+.over { color: var(--red) !important; font-size: 22px !important; }
+.win { color: var(--green) !important; font-size: 22px !important; }
+.line { color: var(--yellow); font-size: 12px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon { animation: grow 420ms steps(6) both; }
+  .details { animation: arrive 260ms 380ms steps(4) both; }
+}
+
+@keyframes grow { from { transform: scale(0.15); } }
+@keyframes arrive { from { opacity: 0; transform: translateY(12px); } }
+
+/* Plain resume: normal type, because pixel fonts are hard to read at length */
+#resume {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html:has(#resume:not([hidden])) body { background: var(--paper); color: var(--paper-ink); }
+
+#resume a { color: var(--link); }
+#resume h1 { margin: 0; font-size: 32px; line-height: 1.2; }
+#resume h2 {
+  margin: 32px 0 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--paper-ink);
+  font-size: 18px;
+}
+#resume h3 { margin: 16px 0 0; font-size: 16px; }
+#resume header p { margin: 6px 0; }
+#resume ul { margin: 8px 0; padding-left: 20px; }
+#resume li { margin-bottom: 6px; }
+#resume .meta { margin: 2px 0; color: var(--paper-muted); font-size: 14px; }
+#resume dl { margin: 0; }
+#resume dl div { margin-bottom: 6px; }
+#resume dt { display: inline; font-weight: 600; }
+#resume dt::after { content: ": "; }
+#resume dd { display: inline; margin: 0; }
+
+.resume-nav { display: flex; justify-content: space-between; margin-bottom: 24px; }
+
+@media print {
+  .resume-nav { display: none; }
+  #resume { max-width: none; padding: 0; font-size: 11pt; }
+}
