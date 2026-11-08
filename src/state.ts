@@ -14,7 +14,7 @@ export type Project = (typeof content.projects)[number];
 export type Scene = 'idle' | 'ready' | 'corridor' | 'maze' | 'powerup' | 'evolve' | 'dying' | 'over' | 'win';
 
 export interface GameUI {
-  showProject(project: Project, alreadySeen: boolean, onClose: () => void): void;
+  showProject(project: Project, onClose: () => void): void;
   showGameOver(line: string, score: number, onRetry: () => void): void;
   showWin(score: number, onRetry: () => void): void;
   showPaused(onResume: () => void): void;
@@ -189,7 +189,7 @@ export class Game {
       return;
     }
     const project = this.projectAt(c, r);
-    if (project) this.openProject(project);
+    if (project && !this.save.collected.includes(project.id)) this.openProject(project);
   }
 
   private eatSchool() {
@@ -222,14 +222,9 @@ export class Game {
   }
 
   private openProject(project: Project) {
-    const alreadySeen = this.save.collected.includes(project.id);
     this.scene = 'powerup';
-    this.ui.showProject(project, alreadySeen, () => {
+    this.ui.showProject(project, () => {
       this.ui.hide();
-      if (alreadySeen) {
-        this.scene = 'maze';
-        return;
-      }
       const before = this.stage;
       this.save.collected.push(project.id);
       this.persist();

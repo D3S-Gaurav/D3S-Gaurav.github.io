@@ -2,7 +2,7 @@
 import { DIRS, Mover, START } from './maze';
 import type { Game } from './state';
 
-const SPEED = 0.125;
+const SPEED = 0.11;
 const CORRIDOR_SPEED = 0.1;
 const TRAIL_LENGTH = 8;
 const TRAIL_EVERY = 5;

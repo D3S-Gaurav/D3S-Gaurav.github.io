@@ -137,14 +137,14 @@ export class Overlays implements GameUI {
     return canvas;
   }
 
-  showProject(project: Project, alreadySeen: boolean, onClose: () => void) {
+  showProject(project: Project, onClose: () => void) {
     const links = project.links
       .map((l) => `<a class="nes-btn" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`)
       .join('');
     this.show(`<section class="card nes-container is-dark" role="dialog" aria-modal="true" aria-labelledby="card-title">
       <div class="icon-slot"></div>
       <div class="details">
-        <p class="kicker">${alreadySeen ? 'PROJECT REVISITED' : 'PROJECT UNLOCKED'}</p>
+        <p class="kicker">PROJECT UNLOCKED</p>
         <h2 id="card-title">${esc(project.title)}</h2>
         <p class="role">${esc(project.role)}${project.dates ? `<br>${esc(project.dates)}` : ''}</p>
         <p>${esc(project.summary)}</p>
